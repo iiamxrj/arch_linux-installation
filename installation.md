@@ -63,3 +63,76 @@ The output confirmed that the EFI partition was mounted at `/boot`, the root par
 Separating the root and home directories allows user files and system files to be organized independently.
 
 The EFI system partition stores files needed for UEFI booting, while swap provides additional virtual memory when needed.
+
+## System Configuration
+
+After installing the base Arch Linux ARM system, I used the Archboot setup utility to configure the operating system.
+
+### 1. Configuring the System
+
+In the Archboot setup menu, I selected **Configure System**.
+
+The configuration menu included:
+
+- User management
+- Virtual console settings
+- Locale configuration
+- Filesystem mount points
+- Kernel modules
+- Initramfs configuration
+- Hostname and network settings
+- Pacman configuration
+
+I used these settings to prepare the installed operating system.
+
+### 2. Verifying the Locale
+
+During installation, I checked the system locale configuration, which displayed:
+
+```text
+LANG=C.UTF-8
+```
+
+The locale determines the language and character encoding used by the system.
+
+### 3. Configuring the Bootloader
+
+I selected **Install Bootloader** from the Archboot setup menu.
+
+The installer presented UEFI bootloader options, including EFISTUB and GRUB.
+
+I configured GRUB for UEFI booting.
+
+After installation, the virtual machine displayed the GNU GRUB boot menu with Arch Linux as a boot option.
+
+### 4. Rebooting the System
+
+I exited the installation environment and rebooted the virtual machine.
+
+The system successfully loaded the GRUB menu, started Arch Linux ARM, and displayed the SDDM graphical login screen.
+
+I logged into the LXQt desktop environment using my personal user account.
+
+### 5. Verifying the Installation
+
+After logging in, I opened a terminal and ran:
+
+```bash
+whoami
+echo $SHELL
+sudo whoami
+systemctl is-enabled sshd
+systemctl is-enabled sddm
+```
+
+These commands verify the current user, default shell, administrator permissions, SSH configuration, and graphical login manager.
+
+The results confirmed that my user account worked with Zsh, sudo permissions were available, and SSH and SDDM were enabled.
+
+## Final Summary
+
+I successfully installed Arch Linux ARM in VMware Fusion with 4 GB RAM, 2 processors, and a 20 GB virtual hard disk.
+
+I configured the LXQt desktop environment, SDDM login manager, GRUB bootloader, administrator accounts, Zsh shell, SSH service, NetworkManager, and a color-coded terminal.
+
+The installation helped me understand Linux partitioning, package management, user permissions, system services, and command-line configuration.
